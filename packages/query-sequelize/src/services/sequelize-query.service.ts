@@ -11,7 +11,7 @@ import {
   GetByIdOptions,
   UpdateOneOptions,
   DeleteOneOptions,
-} from '@nestjs-query/core';
+} from '@repulsetech/nestjs-query-core';
 import lodashPick from 'lodash.pick';
 import { Model, ModelCtor } from 'sequelize-typescript';
 import { WhereOptions } from 'sequelize';
@@ -47,7 +47,7 @@ export class SequelizeQueryService<Entity extends Model<Entity, Partial<Entity>>
   }
 
   /**
-   * Query for multiple entities, using a Query from `@nestjs-query/core`.
+   * Query for multiple entities, using a Query from `@repulsetech/nestjs-query-core`.
    *
    * @example
    * ```ts
@@ -164,7 +164,7 @@ export class SequelizeQueryService<Entity extends Model<Entity, Partial<Entity>>
   }
 
   /**
-   * Update multiple entities with a `@nestjs-query/core` Filter.
+   * Update multiple entities with a `@repulsetech/nestjs-query-core` Filter.
    *
    * @example
    * ```ts
@@ -204,7 +204,7 @@ export class SequelizeQueryService<Entity extends Model<Entity, Partial<Entity>>
   }
 
   /**
-   * Delete multiple records with a `@nestjs-query/core` `Filter`.
+   * Delete multiple records with a `@repulsetech/nestjs-query-core` `Filter`.
    *
    * @example
    *

@@ -11,7 +11,7 @@ import {
   UpdateManyResponse,
   UpdateOneOptions,
   QueryService,
-} from '@nestjs-query/core';
+} from '@repulsetech/nestjs-query-core';
 import { Base } from '@typegoose/typegoose/lib/defaultClasses';
 import { ReturnModelType, DocumentType, mongoose } from '@typegoose/typegoose';
 import { NotFoundException } from '@nestjs/common';
@@ -35,7 +35,7 @@ export class TypegooseQueryService<Entity extends Base>
   }
 
   /**
-   * Query for multiple entities, using a Query from `@nestjs-query/core`.
+   * Query for multiple entities, using a Query from `@repulsetech/nestjs-query-core`.
    *
    * @example
    * ```ts
@@ -176,7 +176,7 @@ export class TypegooseQueryService<Entity extends Base>
   }
 
   /**
-   * Update multiple entities with a `@nestjs-query/core` Filter.
+   * Update multiple entities with a `@repulsetech/nestjs-query-core` Filter.
    *
    * @example
    * ```ts
@@ -217,7 +217,7 @@ export class TypegooseQueryService<Entity extends Base>
   }
 
   /**
-   * Delete multiple records with a `@nestjs-query/core` `Filter`.
+   * Delete multiple records with a `@repulsetech/nestjs-query-core` `Filter`.
    *
    * @example
    *

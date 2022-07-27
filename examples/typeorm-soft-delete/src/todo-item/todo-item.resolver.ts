@@ -1,4 +1,4 @@
-import { UpdateManyResponse, Filter } from '@nestjs-query/core';
+import { UpdateManyResponse, Filter } from '@repulsetech/nestjs-query-core';
 import { FilterType, UpdateManyResponseType } from '@nestjs-query/query-graphql';
 import { Resolver, Args, Mutation, ID } from '@nestjs/graphql';
 import { TodoItemDTO } from './dto/todo-item.dto';

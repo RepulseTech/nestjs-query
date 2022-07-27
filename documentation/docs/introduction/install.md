@@ -3,10 +3,10 @@ title: Install
 sidebar_label: Install
 ---
 
-## @nestjs-query/core
+## @repulsetech/nestjs-query-core
 
 ```sh
-npm i @nestjs-query/core @nestjs/common class-transformer
+npm i @repulsetech/nestjs-query-core @nestjs/common class-transformer
 ```
 
 ## @nestjs-query/query-graphql

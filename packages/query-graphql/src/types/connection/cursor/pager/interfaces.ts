@@ -1,4 +1,4 @@
-import { Query } from '@nestjs-query/core';
+import { Query } from '@repulsetech/nestjs-query-core';
 import { CursorPagingOpts } from './strategies';
 import { CursorConnectionType, PagerResult } from '../../interfaces';
 

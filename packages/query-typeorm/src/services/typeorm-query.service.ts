@@ -13,7 +13,7 @@ import {
   UpdateOneOptions,
   DeleteOneOptions,
   Filterable,
-} from '@nestjs-query/core';
+} from '@repulsetech/nestjs-query-core';
 import { Repository, DeleteResult } from 'typeorm';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { MethodNotAllowedException, NotFoundException } from '@nestjs/common';
@@ -61,7 +61,7 @@ export class TypeOrmQueryService<Entity>
   }
 
   /**
-   * Query for multiple entities, using a Query from `@nestjs-query/core`.
+   * Query for multiple entities, using a Query from `@repulsetech/nestjs-query-core`.
    *
    * @example
    * ```ts
@@ -170,7 +170,7 @@ export class TypeOrmQueryService<Entity>
   }
 
   /**
-   * Update multiple entities with a `@nestjs-query/core` Filter.
+   * Update multiple entities with a `@repulsetech/nestjs-query-core` Filter.
    *
    * @example
    * ```ts
@@ -212,7 +212,7 @@ export class TypeOrmQueryService<Entity>
   }
 
   /**
-   * Delete multiple records with a `@nestjs-query/core` `Filter`.
+   * Delete multiple records with a `@repulsetech/nestjs-query-core` `Filter`.
    *
    * @example
    *
@@ -253,7 +253,7 @@ export class TypeOrmQueryService<Entity>
   }
 
   /**
-   * Restores multiple records with a `@nestjs-query/core` `Filter`.
+   * Restores multiple records with a `@repulsetech/nestjs-query-core` `Filter`.
    *
    * @example
    *

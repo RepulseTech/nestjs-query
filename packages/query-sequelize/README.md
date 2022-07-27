@@ -9,7 +9,7 @@
 
 # `@nestjs-query/query-sequelize`
 
-The `query-sequelize` package that provides an implementation of `@nestjs-query/core` `QueryService`, built on top of of [nestjs](https://nestjs.com/) and [sequelize](https://sequelize.org/). 
+The `query-sequelize` package that provides an implementation of `@repulsetech/nestjs-query-core` `QueryService`, built on top of of [nestjs](https://nestjs.com/) and [sequelize](https://sequelize.org/).
 
 ## Installation
 
@@ -18,5 +18,3 @@ The `query-sequelize` package that provides an implementation of `@nestjs-query/
 ## Getting Started
 
 The get started with the `@nestjs-query/query-sequelize` package checkout the [Getting Started](https://doug-martin.github.io/nestjs-query/docs/sequelize/getting-started) docs.
-
-

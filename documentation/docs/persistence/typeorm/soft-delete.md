@@ -2,12 +2,13 @@
 title: Soft Delete
 ---
 
-`TypeOrm` supports [soft deletes](https://typeorm.io/#/delete-query-builder/soft-delete). This feature does not delete records but instead updates the column decorated with `@DeletedDateColumn`. 
+`TypeOrm` supports [soft deletes](https://typeorm.io/#/delete-query-builder/soft-delete). This feature does not delete records but instead updates the column decorated with `@DeletedDateColumn`.
 
 Before continuing it is recommended that you read the following.
-* https://typeorm.io/#/decorator-reference/deletedatecolumn
-* https://typeorm.io/#/delete-query-builder/soft-delete
-  
+
+- https://typeorm.io/#/decorator-reference/deletedatecolumn
+- https://typeorm.io/#/delete-query-builder/soft-delete
+
 ## Setting up your entity.
 
 Before enabling soft deletes you must add the DeletedDateColumn to your entity.
@@ -48,7 +49,7 @@ The important column is the `deletedAt` column in the above example. Without thi
 Once you have added the column to your entity you need to declare your service setting the `useSoftDelete` flag.
 
 ```ts title="todo-item.service.ts"
-import { QueryService } from '@nestjs-query/core';
+import { QueryService } from '@repulsetech/nestjs-query-core';
 import { TypeOrmQueryService } from '@nestjs-query/query-typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -70,7 +71,7 @@ Notice that when calling `super` the `useSoftDelete` option is set to `true`. Th
 `nestjs-query` does not automatically expose `restore` mutations. In this example we add the restore mutations.
 
 ```ts title="todo-item.resolver.ts"
-import { UpdateManyResponse, Filter } from '@nestjs-query/core';
+import { UpdateManyResponse, Filter } from '@repulsetech/nestjs-query-core';
 import { CRUDResolver, FilterType, UpdateManyResponseType } from '@nestjs-query/query-graphql';
 import { Resolver, Args, Mutation, ID } from '@nestjs/graphql';
 import { TodoItemDTO } from './dto/todo-item.dto';
@@ -97,7 +98,7 @@ export class TodoItemResolver extends CRUDResolver(TodoItemDTO) {
     return this.service.restoreMany(filter);
   }
 }
-``` 
+```
 
 ## Complete Example
 

@@ -79,4 +79,14 @@ export abstract class AbstractAssembler<DTO, Entity, C = DeepPartial<DTO>, CE = 
     const ds = await dtos;
     return this.convertToEntities(ds);
   }
+
+  async convertAsyncToCreateEntity(create: Promise<C>): Promise<CE> {
+    const c = await create;
+    return this.convertToCreateEntity(c);
+  }
+
+  async convertAsyncToCreateEntities(creates: Promise<C[]>): Promise<CE[]> {
+    const cs = await creates;
+    return this.convertToCreateEntities(cs);
+  }
 }

@@ -1,4 +1,4 @@
-import { InjectQueryService, mergeFilter, QueryService, UpdateManyResponse } from '@nestjs-query/core';
+import { InjectQueryService, mergeFilter, QueryService, UpdateManyResponse } from '@repulsetech/nestjs-query-core';
 import { HookTypes, HookInterceptor, MutationHookArgs, UpdateManyResponseType } from '@nestjs-query/query-graphql';
 import { UseInterceptors, UseGuards } from '@nestjs/common';
 import { Mutation, Resolver } from '@nestjs/graphql';

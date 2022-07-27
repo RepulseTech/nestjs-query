@@ -36,14 +36,14 @@ export class AssemblerQueryService<DTO, Entity, C = DeepPartial<DTO>, CE = DeepP
     );
   }
 
-  createMany(items: C[]): Promise<DTO[]> {
+  async createMany(items: C[]): Promise<DTO[]> {
     const { assembler } = this;
-    const converted = assembler.convertToCreateEntities(items);
+    const converted = await assembler.convertAsyncToCreateEntities(Promise.resolve(items));
     return this.assembler.convertAsyncToDTOs(this.queryService.createMany(converted));
   }
 
-  createOne(item: C): Promise<DTO> {
-    const c = this.assembler.convertToCreateEntity(item);
+  async createOne(item: C): Promise<DTO> {
+    const c = await this.assembler.convertAsyncToCreateEntity(Promise.resolve(item));
     return this.assembler.convertAsyncToDTO(this.queryService.createOne(c));
   }
 

@@ -115,7 +115,7 @@ import {
   IDField,
   FilterableConnection,
   FilterableRelation,
-  Authorize
+  Authorize,
 } from '@nestjs-query/query-graphql';
 import { ObjectType, ID, GraphQLISODateTime, Field } from '@nestjs/graphql';
 import { SubTaskDTO } from '../../sub-task/dto/sub-task.dto';
@@ -262,7 +262,7 @@ authorizers that depends on other services.
 ```ts title='sub-task/sub-task.authorizer.ts'
 import { Injectable } from '@nestjs/common';
 import { Authorizer } from '@nestjs-query/query-graphql';
-import { Filter } from '@nestjs-query/core';
+import { Filter } from '@repulsetech/nestjs-query-core';
 import { UserContext } from '../auth/auth.interfaces';
 import { SubTaskDTO } from './dto/sub-task.dto';
 
@@ -338,7 +338,7 @@ In this example there are two important additions:
 2. The `AuthorizerFilter` param decorator uses the authorizer added by the interceptor to create an authorizer filter.
 
 ```ts title="todo-item/todo-item.resolver.ts" {9,17}
-import { Filter, InjectQueryService, mergeFilter, mergeQuery, QueryService } from '@nestjs-query/core';
+import { Filter, InjectQueryService, mergeFilter, mergeQuery, QueryService } from '@repulsetech/nestjs-query-core';
 import { AuthorizerInterceptor, AuthorizerFilter, ConnectionType } from '@nestjs-query/query-graphql';
 import { Args, Query, Resolver } from '@nestjs/graphql';
 import { UseInterceptors } from '@nestjs/common';
@@ -378,7 +378,7 @@ resolvers provided by `nestjs-query`.
 In this example the `Authorizer` is injected as a `readonly` property you can then use it for any custom methods.
 
 ```ts title="todo-item/todo-item.resolver.ts"
-import { QueryService, InjectQueryService } from '@nestjs-query/core';
+import { QueryService, InjectQueryService } from '@repulsetech/nestjs-query-core';
 import { CRUDResolver, InjectAuthorizer } from '@nestjs-query/query-graphql';
 import { Resolver, Query, Args } from '@nestjs/graphql';
 import { TodoItemDTO } from './dto/todo-item.dto';
@@ -414,7 +414,7 @@ In this case we can make use of the second parameter of the `authorize` function
 ```ts title='sub-task/sub-task.authorizer.ts'
 import { Injectable } from '@nestjs/common';
 import { CustomAuthorizer } from '@nestjs-query/query-graphql';
-import { Filter } from '@nestjs-query/core';
+import { Filter } from '@repulsetech/nestjs-query-core';
 import { UserContext } from '../auth/auth.interfaces';
 import { SubTaskDTO } from './dto/sub-task.dto';
 

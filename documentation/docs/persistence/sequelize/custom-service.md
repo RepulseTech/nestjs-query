@@ -5,7 +5,7 @@ title: Custom Service
 To create a custom query service to add your own methods to you can extend the `SequelizeQueryService`.
 
 ```ts title="todo-item.service.ts"
-import { QueryService } from '@nestjs-query/core';
+import { QueryService } from '@repulsetech/nestjs-query-core';
 import { InjectModel } from '@nestjs/sequelize';
 import { SequelizeQueryService } from '@nestjs-query/query-sequelize';
 import { TodoItemEntity } from './entity/todo-item.entity';
@@ -54,5 +54,4 @@ import { TodoItemService } from './todo-item.service';
   ],
 })
 export class TodoItemModule {}
-
 ```

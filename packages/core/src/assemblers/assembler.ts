@@ -91,6 +91,18 @@ export interface Assembler<
    * @param createDtos
    */
   convertToCreateEntities(createDtos: CreateDTO[]): CreateEntity[];
+
+  /**
+   * Convert a create dto input to the equivalent create entity type
+   * @param createDTO
+   */
+  convertAsyncToCreateEntity(createDTO: Promise<CreateDTO>): Promise<CreateEntity>;
+
+  /**
+   * Convert an array of DTOs to an array of entities.
+   * @param createDTOs - the promise that should resolve with the dtos.
+   */
+  convertAsyncToCreateEntities(createDTOs: Promise<CreateDTO[]>): Promise<CreateEntity[]>;
 }
 
 const assemblerReflector = new ValueReflector(ASSEMBLER_CLASSES_KEY);

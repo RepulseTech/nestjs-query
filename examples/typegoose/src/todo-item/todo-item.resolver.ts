@@ -1,4 +1,4 @@
-import { Filter, InjectAssemblerQueryService, QueryService } from '@nestjs-query/core';
+import { Filter, InjectAssemblerQueryService, QueryService } from '@repulsetech/nestjs-query-core';
 import { ConnectionType } from '@nestjs-query/query-graphql';
 import { Args, Query, Resolver } from '@nestjs/graphql';
 import { TodoItemDTO } from './dto/todo-item.dto';

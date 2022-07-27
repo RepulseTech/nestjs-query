@@ -1,4 +1,4 @@
-import { AggregateResponse } from '@nestjs-query/core';
+import { AggregateResponse } from '@repulsetech/nestjs-query-core';
 import { CursorConnectionType } from '@nestjs-query/query-graphql';
 import { Test } from '@nestjs/testing';
 import request from 'supertest';

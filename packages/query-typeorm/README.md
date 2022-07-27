@@ -9,7 +9,7 @@
 
 # `@nestjs-query/query-typeorm`
 
-The `query-typeorm` package that provides an implementation of `@nestjs-query/core` `QueryService`, built on top of of [nestjs](https://nestjs.com/) and [typeorm](https://typeorm.io/). 
+The `query-typeorm` package that provides an implementation of `@repulsetech/nestjs-query-core` `QueryService`, built on top of of [nestjs](https://nestjs.com/) and [typeorm](https://typeorm.io/).
 
 ## Installation
 
@@ -18,5 +18,3 @@ The `query-typeorm` package that provides an implementation of `@nestjs-query/co
 ## Getting Started
 
 The get started with the `@nestjs-query/query-typeorm` package checkout the [Getting Started](https://doug-martin.github.io/nestjs-query/docs/persistence/typeorm/getting-started) docs.
-
-

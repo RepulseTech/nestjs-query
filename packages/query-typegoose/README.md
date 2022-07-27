@@ -9,7 +9,7 @@
 
 # `@nestjs-query/query-typeorm`
 
-The `query-typegoose` package that provides an implementation of `@nestjs-query/core` `QueryService`, built on top of of [nestjs](https://nestjs.com/) and [typegoose](https://github.com/typegoose/typegoose).
+The `query-typegoose` package that provides an implementation of `@repulsetech/nestjs-query-core` `QueryService`, built on top of of [nestjs](https://nestjs.com/) and [typegoose](https://github.com/typegoose/typegoose).
 
 ## Installation
 

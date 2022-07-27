@@ -9,7 +9,7 @@
 
 # `@nestjs-query/query-mongoose`
 
-The `query-mongoose` package that provides an implementation of `@nestjs-query/core` `QueryService`, built on top of of [nestjs](https://nestjs.com/) and [mongoose](https://mongoosejs.com/). 
+The `query-mongoose` package that provides an implementation of `@repulsetech/nestjs-query-core` `QueryService`, built on top of of [nestjs](https://nestjs.com/) and [mongoose](https://mongoosejs.com/).
 
 ## Installation
 
@@ -18,5 +18,3 @@ The `query-mongoose` package that provides an implementation of `@nestjs-query/c
 ## Getting Started
 
 The get started with the `@nestjs-query/query-mongoose` package checkout the [Getting Started](https://doug-martin.github.io/nestjs-query/docs/persistence/mongoose/getting-started) docs.
-
-

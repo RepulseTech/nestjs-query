@@ -1,4 +1,4 @@
-import { CommonFieldComparisonBetweenType, FilterComparisonOperators } from '@nestjs-query/core';
+import { CommonFieldComparisonBetweenType, FilterComparisonOperators } from '@repulsetech/nestjs-query-core';
 import { ObjectLiteral } from 'typeorm';
 
 import { randomString } from '../common';

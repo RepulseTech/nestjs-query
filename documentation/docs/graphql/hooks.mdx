@@ -4,21 +4,22 @@ title: Hooks
 
 `nestjs-query` provides the following hooks that allow you to modify incoming requests.
 
-* `@BeforeFindOne` - invoked before any `findOne` query.
-* `@BeforeQueryMany` - invoked before any `queryMany` query.
-* `@BeforeCreateOne` - invoked before any `createOne` mutation.
-* `@BeforeCreateMany` - invoked before any `createMany` mutation.
-* `@BeforeUpdateOne` - invoked before any `updateOne` mutation.
-* `@BeforeUpdateMany` - invoked before any `updateMany` mutation.
-* `@BeforeDeleteOne` - invoked before any `deleteOne` mutation.
-* `@BeforeDeleteMany` - invoked before any `deleteMany` mutation.
+- `@BeforeFindOne` - invoked before any `findOne` query.
+- `@BeforeQueryMany` - invoked before any `queryMany` query.
+- `@BeforeCreateOne` - invoked before any `createOne` mutation.
+- `@BeforeCreateMany` - invoked before any `createMany` mutation.
+- `@BeforeUpdateOne` - invoked before any `updateOne` mutation.
+- `@BeforeUpdateMany` - invoked before any `updateMany` mutation.
+- `@BeforeDeleteOne` - invoked before any `deleteOne` mutation.
+- `@BeforeDeleteMany` - invoked before any `deleteMany` mutation.
 
 In order to use a hook you only need to decorate your DTO with the corresponding decorator.
 
 Each hook decorator can be provided one of the following:
- * A hook function
- * A class that extends `Hook`, when using a class you can use DI to access other services just like `guards`,
- `interceptors` or `pipes`.
+
+- A hook function
+- A class that extends `Hook`, when using a class you can use DI to access other services just like `guards`,
+  `interceptors` or `pipes`.
 
 :::warning
 The graphql context by default only contains the incoming request!
@@ -38,13 +39,13 @@ We have defined our `GqlContext` as
 ```ts
 export type GqlContext = { req: { headers: Record<string, string> } };
 ```
+
 :::
 
 ## @BeforeCreateOne
 
 The `@BeforeCreateOne` decorator can be used to modify incoming `createOne` mutations with information from the graphql
 context.
-
 
 ### Hook Function
 
@@ -62,8 +63,7 @@ import { getUserName } from '../../helpers';
   return input;
 })
 export class TodoItemDTO {
-
- /**
+  /**
  Other fields
  **/
 
@@ -73,7 +73,6 @@ export class TodoItemDTO {
   @FilterableField({ nullable: true })
   updatedBy?: string;
 }
-
 ```
 
 ### Hook Class
@@ -81,9 +80,10 @@ export class TodoItemDTO {
 You can also provide a custom `Hook` class that can leverage `nestjs` dependency injection.
 
 In this example we create a simple Hook that works with any type that has a `createdBy` property.
+
 ```ts
 import { Injectable } from '@nestjs/common';
-import { BeforeCreateOneHook, CreateOneInputType,} from '@nestjs-query/query-graphql';
+import { BeforeCreateOneHook, CreateOneInputType } from '@nestjs-query/query-graphql';
 import { GqlContext } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 
@@ -113,8 +113,7 @@ import { CreatedByHook } from '../../hooks';
 @ObjectType('TodoItem')
 @BeforeCreateOne(CreatedByHook)
 export class TodoItemDTO {
-
- /**
+  /**
  Other fields
  **/
 
@@ -124,14 +123,12 @@ export class TodoItemDTO {
   @FilterableField({ nullable: true })
   updatedBy?: string;
 }
-
 ```
 
 ## @BeforeCreateMany
 
 The `@BeforeCreateMany` decorator can be used to modify incoming `createMany` mutations with information from the
 graphql context.
-
 
 ### Hook Function
 
@@ -150,8 +147,7 @@ import { getUserName } from '../../helpers';
   return input;
 })
 export class TodoItemDTO {
-
-   /**
+  /**
    Other fields
    **/
 
@@ -161,7 +157,6 @@ export class TodoItemDTO {
   @FilterableField({ nullable: true })
   updatedBy?: string;
 }
-
 ```
 
 ### Hook Class
@@ -169,9 +164,10 @@ export class TodoItemDTO {
 You can also provide a custom `Hook` class that can leverage `nestjs` dependency injection.
 
 In this example we create a simple Hook that works with any type that has a `createdBy` property.
+
 ```ts
 import { Injectable } from '@nestjs/common';
-import { BeforeCreateManyHook, CreateManyInputType,} from '@nestjs-query/query-graphql';
+import { BeforeCreateManyHook, CreateManyInputType } from '@nestjs-query/query-graphql';
 import { GqlContext } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 
@@ -201,8 +197,7 @@ import { CreatedByHook } from '../../hooks';
 @ObjectType('TodoItem')
 @BeforeCreateMany(CreatedByHook)
 export class TodoItemDTO {
-
- /**
+  /**
  Other fields
  **/
 
@@ -212,14 +207,12 @@ export class TodoItemDTO {
   @FilterableField({ nullable: true })
   updatedBy?: string;
 }
-
 ```
 
 ## @BeforeUpdateOne
 
 The `@BeforeUpdateOne` decorator can be used to modify incoming `updateOne` mutations with information from the graphql
 context.
-
 
 ### Hook Fnction
 
@@ -237,7 +230,6 @@ import { getUserName } from '../../helpers';
   return input;
 })
 export class TodoItemDTO {
-
   /**
   Other fields
   **/
@@ -248,7 +240,6 @@ export class TodoItemDTO {
   @FilterableField({ nullable: true })
   updatedBy?: string;
 }
-
 ```
 
 ### Hook Class
@@ -256,6 +247,7 @@ export class TodoItemDTO {
 You can also provide a custom `Hook` class that can leverage `nestjs` dependency injection.
 
 In this example we create a simple Hook that works with any type that has a `updatedBy` property.
+
 ```ts
 import { BeforeUpdateOneHook, UpdateOneInputType } from '@nestjs-query/query-graphql';
 import { Injectable } from '@nestjs/common';
@@ -288,8 +280,7 @@ import { CreatedByHook } from '../../hooks';
 @ObjectType('TodoItem')
 @BeforeUpdateOne(UpdatedByHook)
 export class TodoItemDTO {
-
- /**
+  /**
  Other fields
  **/
 
@@ -299,7 +290,6 @@ export class TodoItemDTO {
   @FilterableField({ nullable: true })
   updatedBy?: string;
 }
-
 ```
 
 ## @BeforeUpdateMany
@@ -323,7 +313,6 @@ import { getUserName } from '../../helpers';
   return input;
 })
 export class TodoItemDTO {
-
   /**
   Other fields
   **/
@@ -334,7 +323,6 @@ export class TodoItemDTO {
   @FilterableField({ nullable: true })
   updatedBy?: string;
 }
-
 ```
 
 ### Hook Class
@@ -342,6 +330,7 @@ export class TodoItemDTO {
 You can also provide a custom `Hook` class that can leverage `nestjs` dependency injection.
 
 In this example we create a simple Hook that works with any type that has a `updatedBy` property.
+
 ```ts
 import { BeforeUpdateManyHook, UpdateManyInputType } from '@nestjs-query/query-graphql';
 import { Injectable } from '@nestjs/common';
@@ -374,8 +363,7 @@ import { CreatedByHook } from '../../hooks';
 @ObjectType('TodoItem')
 @BeforeUpdateMany(UpdatedByHook)
 export class TodoItemDTO {
-
- /**
+  /**
  Other fields
  **/
 
@@ -385,14 +373,14 @@ export class TodoItemDTO {
   @FilterableField({ nullable: true })
   updatedBy?: string;
 }
-
 ```
 
 ## Using Hooks In Custom Endpoints
 
 You can also use hooks in custom endpoints by using the `HookInterceptor` along with
-* `HookArgs` - Used to apply hooks to any query endpoint.
-* `MutationHookArgs` - Used to apply hooks to any `mutation` that uses `MutationArgsType`
+
+- `HookArgs` - Used to apply hooks to any query endpoint.
+- `MutationHookArgs` - Used to apply hooks to any `mutation` that uses `MutationArgsType`
 
 ### Example
 
@@ -401,9 +389,10 @@ In this example we'll create an endpoint that marks all todo items that are curr
 To start we'll create our input types.
 
 There are two types that are created
-* The `UpdateManyTodoItemsInput` which extends the `UpdateManyInputType` this exposes an `update` and `filter` field just like the `updateMany` endpoints that are auto generated.
-* The `UpdateManyTodoItemsArgs` which extends `MutationArgsType`, this provides a uniform interface for all mutations
- ensuring that the argument provided to the mutation is named `input`.
+
+- The `UpdateManyTodoItemsInput` which extends the `UpdateManyInputType` this exposes an `update` and `filter` field just like the `updateMany` endpoints that are auto generated.
+- The `UpdateManyTodoItemsArgs` which extends `MutationArgsType`, this provides a uniform interface for all mutations
+  ensuring that the argument provided to the mutation is named `input`.
 
 ```ts title="todo-item/types.ts"
 import { MutationArgsType, UpdateManyInputType } from '@nestjs-query/query-graphql';
@@ -420,10 +409,11 @@ export class MarkTodoItemsAsCompletedInput extends UpdateManyInputType(TodoItemD
 @ArgsType()
 export class MarkTodoItemsAsCompletedArgs extends MutationArgsType(UpdateManyTodoItemsInput) {}
 ```
+
 Now we can use our new types in the resolver.
 
 ```ts title="todo-item/todo-item.resolver.ts" {16,17}
-import { InjectQueryService, mergeFilter, QueryService, UpdateManyResponse } from '@nestjs-query/core';
+import { InjectQueryService, mergeFilter, QueryService, UpdateManyResponse } from '@repulsetech/nestjs-query-core';
 import { HookTypes, HookInterceptor, MutationHookArgs, UpdateManyResponseType } from '@nestjs-query/query-graphql';
 import { UseInterceptors } from '@nestjs/common';
 import { Mutation, Resolver } from '@nestjs/graphql';
@@ -446,8 +436,8 @@ export class TodoItemResolver {
     );
   }
 }
-
 ```
+
 The first thing to notice is the
 
 ```ts
@@ -457,10 +447,11 @@ The first thing to notice is the
 This interceptor adds the correct hook to the `context` to be used by the param decorator.
 
 There are a few things to take note of:
-* The `HookTypes.BEFORE_UPDATE_MANY` lets the interceptor know we are wanting the BeforeUpdateMany hook to be used
-for this mutation.
-* We use the `TodoItemUpdateDTO`, that is because the `@BeforeUpdateMany` decorator was put on the
-`TodoItemUpdateDTO` not the `TodoItemDTO`.
+
+- The `HookTypes.BEFORE_UPDATE_MANY` lets the interceptor know we are wanting the BeforeUpdateMany hook to be used
+  for this mutation.
+- We use the `TodoItemUpdateDTO`, that is because the `@BeforeUpdateMany` decorator was put on the
+  `TodoItemUpdateDTO` not the `TodoItemDTO`.
 
 :::warning
 When using the HookInterceptor you must use the DTO that you added the hook decorator to.
@@ -476,6 +467,7 @@ The next piece is the
 ```ts
 @MutationHookArgs() { input }: UpdateManyTodoItemsArgs
 ```
+
 By using the `MutationHookArgs` decorator we ensure that the hook is applied to the arguments adding any additional
 fields to the update.
 

@@ -11,11 +11,11 @@ Before reading this it is recommended to read the [nestjs graphql subscriptions 
 
 `nestjs-query` includes out of the box subscription support. When enabling subscriptions the following subscriptions will be created
 
-* `created{ObjectName}` - published when the `createOne` or `createMany` mutation is called.
-* `updatedOne{ObjectName}`  - published when the `updateOne` mutation is called.
-* `updatedMany{ObjectName}` - published when `updateMany` mutation is called.
-* `deletedOne{ObjectName}` - published when the `deleteOne` mutation is called.
-* `deletedMany{ObjectName}`  - published when `deleteMany` mutation is called.
+- `created{ObjectName}` - published when the `createOne` or `createMany` mutation is called.
+- `updatedOne{ObjectName}` - published when the `updateOne` mutation is called.
+- `updatedMany{ObjectName}` - published when `updateMany` mutation is called.
+- `deletedOne{ObjectName}` - published when the `deleteOne` mutation is called.
+- `deletedMany{ObjectName}` - published when `deleteMany` mutation is called.
 
 ## Enabling Subscriptions
 
@@ -25,11 +25,11 @@ In both cases you need to set the `enableSubscriptions` option to `true`.
 
 In the below example the following subscriptions will be exposed.
 
-* `createdTodoItem` - published when the `createOne` or `createMany` mutation is called.
-* `updatedOneTodoItem`  - published when the `updateOne` mutation is called.
-* `updatedManyTodoItems` - published when `updateMany` mutation is called.
-* `deletedOneTodoItem` - published when the `deleteOne` mutation is called.
-* `deletedManyTodoItems`  - published when `deleteMany` mutation is called.
+- `createdTodoItem` - published when the `createOne` or `createMany` mutation is called.
+- `updatedOneTodoItem` - published when the `updateOne` mutation is called.
+- `updatedManyTodoItems` - published when `updateMany` mutation is called.
+- `deletedOneTodoItem` - published when the `deleteOne` mutation is called.
+- `deletedManyTodoItems` - published when `deleteMany` mutation is called.
 
 <Tabs
   defaultValue="module"
@@ -52,13 +52,15 @@ import { TodoItemEntity } from './todo-item.entity';
   imports: [
     NestjsQueryGraphQLModule.forFeature({
       imports: [NestjsQueryTypeOrmModule.forFeature([TodoItemEntity])],
-      resolvers: [{
-        DTOClass: TodoItemDTO,
-        EntityClass: TodoItemEntity,
-        CreateDTOClass: TodoItemInputDTO,
-        UpdateDTOClass: TodoItemInputDTO,
-        enableSubscriptions: true,
-      }],
+      resolvers: [
+        {
+          DTOClass: TodoItemDTO,
+          EntityClass: TodoItemEntity,
+          CreateDTOClass: TodoItemInputDTO,
+          UpdateDTOClass: TodoItemInputDTO,
+          enableSubscriptions: true,
+        },
+      ],
     }),
   ],
 })
@@ -71,7 +73,7 @@ export class TodoItemModule {}
 When manually defining your resolver you must also provide a readonly `pubSub` property. In this the default `PubSub` implementation is injected.
 
 ```ts title="todo-item.resolver.ts" {13,17}
-import { QueryService, InjectQueryService } from '@nestjs-query/core';
+import { QueryService, InjectQueryService } from '@repulsetech/nestjs-query-core';
 import { CRUDResolver, InjectPubSub } from '@nestjs-query/query-graphql';
 import { Resolver } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
@@ -86,8 +88,8 @@ export class TodoItemResolver extends CRUDResolver(TodoItemDTO, {
   enableSubscriptions: true,
 }) {
   constructor(
-      @InjectQueryService(TodoItemEntity) readonly service: QueryService<TodoItemEntity>,
-      @InjectPubSub() readonly pubSub: PubSub
+    @InjectQueryService(TodoItemEntity) readonly service: QueryService<TodoItemEntity>,
+    @InjectPubSub() readonly pubSub: PubSub,
   ) {
     super(service);
   }
@@ -140,14 +142,13 @@ import { TodoItemEntity } from './todo-item.entity';
   ],
 })
 export class TodoItemModule {}
-
 ```
 
 </TabItem>
 <TabItem value="resolver">
 
 ```ts title="todo-item.resolver.ts" {14-15}
-import { QueryService, InjectQueryService } from '@nestjs-query/core';
+import { QueryService, InjectQueryService } from '@repulsetech/nestjs-query-core';
 import { CRUDResolver, InjectPubSub } from '@nestjs-query/query-graphql';
 import { Resolver } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
@@ -164,8 +165,8 @@ export class TodoItemResolver extends CRUDResolver(TodoItemDTO, {
   delete: { many: { enableSubscriptions: false } },
 }) {
   constructor(
-      @InjectQueryService(TodoItemEntity) readonly service: QueryService<TodoItemEntity>,
-      @InjectPubSub() readonly pubSub: PubSub
+    @InjectQueryService(TodoItemEntity) readonly service: QueryService<TodoItemEntity>,
+    @InjectPubSub() readonly pubSub: PubSub,
   ) {
     super(service);
   }
@@ -185,9 +186,7 @@ For example to filter for all created `TodoItems` where the like starts with `Fo
 
 ```graphql
 subscription {
-  createdTodoItem(
-    input: { filter: { title: { like: "Foo%" }, completed: { is: true } } }
-  ) {
+  createdTodoItem(input: { filter: { title: { like: "Foo%" }, completed: { is: true } } }) {
     id
     title
     description
@@ -221,7 +220,6 @@ export class RedisPubSubProvider {
     };
   }
 }
-
 ```
 
 In order to let `nestjs-query` know about the provider you can set the `pubSub` option.

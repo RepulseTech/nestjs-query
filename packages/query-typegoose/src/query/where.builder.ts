@@ -1,4 +1,4 @@
-import { Filter, FilterComparisons, FilterFieldComparison } from '@nestjs-query/core';
+import { Filter, FilterComparisons, FilterFieldComparison } from '@repulsetech/nestjs-query-core';
 import { ReturnModelType, mongoose } from '@typegoose/typegoose';
 import { EntityComparisonField, ComparisonBuilder } from './comparison.builder';
 

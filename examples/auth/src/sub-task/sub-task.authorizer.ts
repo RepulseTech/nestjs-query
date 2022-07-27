@@ -1,5 +1,5 @@
 import { Authorizer, AuthorizationContext } from '@nestjs-query/query-graphql';
-import { Filter } from '@nestjs-query/core';
+import { Filter } from '@repulsetech/nestjs-query-core';
 import { UserContext } from '../auth/auth.interfaces';
 import { SubTaskDTO } from './dto/sub-task.dto';
 

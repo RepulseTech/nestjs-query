@@ -13,8 +13,9 @@ import TabItem from '@theme/TabItem';
 ### `@InjectQueryService`
 
 In `v0.11.x` an new decorator was added `@InjectQueryService`, this decorator replaces the ORM specific decorators:
-* `@InjectTypeOrmQueryService`
-* `@InjectSequelizeQueryService`
+
+- `@InjectTypeOrmQueryService`
+- `@InjectSequelizeQueryService`
 
 To migrate replace all `@InjectTypeOrmQueryService` and `@InjectSequelizeQueryService` with `@InjectQueryService`.
 
@@ -23,7 +24,7 @@ You still need to import the `NestjsQueryTypeOrmModule` or `NestjsQuerySequelize
 :::
 
 ```ts
-import { QueryService, InjectQueryService } from '@nestjs-query/core';
+import { QueryService, InjectQueryService } from '@repulsetech/nestjs-query-core';
 import { CRUDResolver } from '@nestjs-query/query-graphql';
 import { Resolver } from '@nestjs/graphql';
 import { TodoItemDTO } from './dto/todo-item.dto';
@@ -84,7 +85,7 @@ In this example we add a connection for `subTasks`.
 ```ts {6}
 import { FilterableField, Connection } from '@nestjs-query/query-graphql';
 import { ObjectType, ID, GraphQLISODateTime } from '@nestjs/graphql';
-import { SubTaskDTO } from '../sub-task/sub-task.dto'
+import { SubTaskDTO } from '../sub-task/sub-task.dto';
 
 @ObjectType('TodoItem')
 @Connection('subTasks', () => SubTaskDTO, { disableRemove: true })
@@ -176,13 +177,12 @@ Be sure to add the `NestjsQueryTypeOrmModule` or `NestjsQuerySequelizeModule` to
 
 To read more about the auto-generated resolvers check out the [resolvers docs](/docs/graphql/resolvers)
 
-
 ### Example
 
 #### Previously
 
 ```ts title="todo-item.resolver.ts"
-import { QueryService, InjectQueryService } from '@nestjs-query/core';
+import { QueryService, InjectQueryService } from '@repulsetech/nestjs-query-core';
 import { CRUDResolver } from '@nestjs-query/query-graphql';
 import { Resolver } from '@nestjs/graphql';
 import { TodoItemInputDTO } from './todo-item.input';
@@ -191,9 +191,7 @@ import { TodoItemEntity } from './todo-item.entity';
 
 @Resolver()
 export class TodoItemResolver extends CRUDResolver(TodoItemDTO) {
-  constructor(
-      @InjectQueryService(TodoItemEntity) readonly service: QueryService<TodoItemEntity>
-  ) {
+  constructor(@InjectQueryService(TodoItemEntity) readonly service: QueryService<TodoItemEntity>) {
     super(service);
   }
 }
@@ -220,7 +218,6 @@ import { TodoItemResolver } from './todo-item.resolver';
   imports: [NestjsQueryTypeOrmModule.forFeature([TodoItemEntity])],
 })
 export class TodoItemModule {}
-
 ```
 
 </TabItem>
@@ -237,12 +234,10 @@ import { TodoItemResolver } from './todo-item.resolver';
   imports: [NestjsQuerySequelizeModule.forFeature([TodoItemEntity])],
 })
 export class TodoItemModule {}
-
 ```
 
 </TabItem>
 </Tabs>
-
 
 #### New
 
@@ -297,5 +292,3 @@ export class TodoItemModule {}
 
 </TabItem>
 </Tabs>
-
-

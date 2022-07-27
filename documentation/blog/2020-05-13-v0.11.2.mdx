@@ -19,7 +19,7 @@ In `v0.11.1` a new `@InjectAssemblerQueryService` decorator has been introduced 
 Define your assembler
 
 ```ts title="todo-item.assembler.ts"
-import { Assembler, ClassTransformerAssembler } from '@nestjs-query/core';
+import { Assembler, ClassTransformerAssembler } from '@repulsetech/nestjs-query-core';
 import { TodoItemDTO } from './todo-item.dto';
 import { TodoItemEntity } from './todo-item.entity';
 
@@ -31,13 +31,12 @@ export class TodoItemAssembler extends ClassTransformerAssembler<TodoItemDTO, To
     return dto;
   }
 }
-
 ```
 
 Now, instead of defining an `AssemblerQueryService` you can use the decorator.
 
 ```ts title="todo-item.resolver.ts" {8}
-import { QueryService, InjectAssemblerQueryService } from '@nestjs-query/core';
+import { QueryService, InjectAssemblerQueryService } from '@repulsetech/nestjs-query-core';
 import { CRUDResolver } from '@nestjs-query/query-graphql';
 import { Resolver } from '@nestjs/graphql';
 import { TodoItemDTO } from './dto/todo-item.dto';
@@ -83,7 +82,6 @@ import { TodoItemAssembler } from './todo-item.assembler';
   ],
 })
 export class TodoItemModule {}
-
 ```
 
 ## Using Services in auto-generated Resolver
@@ -120,4 +118,3 @@ import { TodoItemService } from './todo-item.service';
 })
 export class TodoItemModule {}
 ```
-
